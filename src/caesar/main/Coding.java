@@ -29,7 +29,14 @@ public class Coding
 
         for (int i = 0; i < chars.length; i++)
         {
-            chars[i] -= shift;
+            if (chars[i] + shift > 90)
+            {
+                chars[i] = (char) (64 + (shift - (90 - chars[i])));
+            }
+            else
+            {
+                chars[i] -= shift;
+            }
         }
         String product = new String(chars);
 
