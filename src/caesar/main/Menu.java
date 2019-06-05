@@ -1,5 +1,6 @@
 package caesar.main;
 
+import file.LoadFromFile;
 import file.SaveToFile;
 
 import java.util.Scanner;
@@ -30,11 +31,26 @@ public class Menu
                     break;
 
                 case 2:
-                    System.out.println("Insert your text");
-                    text = scanner.next();
-                    System.out.println("Insert shift: ");
-                    shift = scanner.nextInt();
-                    System.out.println(coding.deCoding(text, shift));
+                    System.out.println("1. Enter text, 2. Read from file");
+                    menu = scanner.nextInt();
+                 switch (menu)
+                 {
+                     case 1:
+                         System.out.println("Insert your text");
+                         text = scanner.next();
+                         System.out.println("Insert shift: ");
+                         shift = scanner.nextInt();
+                         System.out.println(coding.deCoding(text, shift));
+                         break;
+                     case 2:
+                         LoadFromFile loadFromFile = new LoadFromFile();
+                         String s = loadFromFile.loadFromFile("/home/dominik/Pobrane/secretCode.txt");
+                         System.out.println("Insert shift: ");
+                         shift = scanner.nextInt();
+
+                         System.out.println(coding.deCoding(s, shift));
+                         break;
+                 }
                     break;
             }
         }
