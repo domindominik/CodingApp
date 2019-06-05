@@ -17,9 +17,11 @@ public class SaveToFile
     {
         try (FileOutputStream f = new FileOutputStream(new File("/home/dominik/Pobrane/secret.txt")))
         {
-            ObjectOutputStream o = new ObjectOutputStream(f);
-            o.writeObject(text);
-            o.close();
+            try(ObjectOutputStream o = new ObjectOutputStream(f))
+            {
+                o.writeObject(text);
+            }
+
         }
         catch (Exception e)
         {
