@@ -47,9 +47,9 @@ public class RSA2
 
     public long getD()
     {
-        for (int i = 2; i < getfI(); i++)
+        for (int i = 2; i < fI; i++)
         {
-            if ((i * e % fI == 1))
+            if (i * e % fI == 1)
             {
                 d = i;
                 break;
@@ -74,10 +74,10 @@ public class RSA2
 
         for (int i = 0; i < chars.length; i++)
         {
-            chars[i] = (char) ((Math.pow(chars[i], e) % n));
+            chars[i] = (char) (Math.pow(chars[i], e) % n);
         }
-        String product = new String(chars);
-        return product;
+        return new String(chars);
+
     }
 
     public String deCoding (String text, long d, long n)
@@ -86,7 +86,7 @@ public class RSA2
 
         for (int i = 0; i < chars.length; i++)
         {
-            chars[i] = (char) ((Math.pow(chars[i], d) % n));
+            chars[i] = (char) (Math.pow(chars[i], d) % n);
         }
         return new String(chars);
     }
