@@ -8,7 +8,8 @@ public class RSA2
     private long n;
     private long e;
     private long d;
-    private static long[] primeNumber = new long[]{11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+    //private static long[] primeNumber = new long[]{11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+    private static long[] primeNumber = new long[]{3, 5, 7, 11, 13, 17};
 
     public RSA2()
     {
@@ -74,7 +75,9 @@ public class RSA2
 
         for (int i = 0; i < chars.length; i++)
         {
-            chars[i] = (char) (Math.pow(chars[i], e) % n);
+            long x = (long) chars[i];
+            long y = pow(x,e,n);
+            chars[i] = (char) y;
         }
         return new String(chars);
 
@@ -89,6 +92,16 @@ public class RSA2
             chars[i] = (char) (Math.pow(chars[i], d) % n);
         }
         return new String(chars);
+    }
+
+    public long pow(long x, long d, long n)
+    {
+        long result = 1;
+        for (long i = 0; i < d; i++)
+        {
+            result = (result * x) % n;
+        }
+        return result;
     }
 
 
